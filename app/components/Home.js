@@ -1,17 +1,23 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import styles from './Home.css';
+const Navbar = require('./navbar.js');
+const Footer = require('./footer.js');
 
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className={styles.container}>
-          <h2>Anuvadak Coming soon...</h2>
-         {/*<Link to="/counter">to Counter</Link>*/}
-        </div>
+        <Navbar />
+          <div className="container-fluid">
+            <div className="row row-col-fixed">
+              <div className="col-sm-6 col-fixed">
+                <div className="row">
+                </div>
+              </div>
+            </div>
+          </div>
+        <Footer />
       </div>
     );
   }

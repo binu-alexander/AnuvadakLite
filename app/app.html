@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet">
     <title>Anuvadak</title>
     <script>
       (function() {
         if (!process.env.HOT) {
           const link = document.createElement('link');
           link.rel = 'stylesheet';
-          link.href = './dist/style.css';
+          // link.href = './dist/style.css';
           // HACK: Writing the script path should be done with webpack
           document.getElementsByTagName('head')[0].appendChild(link);
         }
