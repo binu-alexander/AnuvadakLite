@@ -25,7 +25,8 @@
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
     "package-all": "npm run build && build -mwl",
-    "cleanup": "mop -v"
+    "cleanup": "mop -v",
+    "postinstall": "cd node_modules/leveldown && HOME=~/.electron-gyp node-gyp rebuild --target=1.4.14 --arch=x64 --dist-url=https://atom.io/download/atom-shell"
   },
   "browserslist": "chrome 50",
   "build": {
@@ -173,7 +174,10 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "source-map-support": "^0.4.8"
+    "source-map-support": "^0.4.8",
+    "pouchdb-adapter-leveldb": "^6.1.0",
+    "pouchdb-core": "^6.1.0",
+    "pouchdb-quick-search": "^1.2.0"
   },
   "devEngines": {
     "node": ">=6.x",

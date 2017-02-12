@@ -27,7 +27,7 @@ class NavBar extends React.Component {
               <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
                  <li><Link to="/setting"><i className="fa fa-cog fa-2x"></i></Link></li>
-                  <li><Link to="/setting"><i className="fa fa-info fa-2x"></i></Link></li>
+                  <li><Link to="/projectList"><i className="fa fa-info fa-2x"></i></Link></li>
                   <li><Link to="/export"><i className="fa fa-cloud-download fa-2x"></i></Link></li>
                 </ul>
               </div>
