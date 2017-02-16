@@ -5,6 +5,22 @@ const Footer = require('./footer.js');
 const FormControl = require('react-bootstrap/lib/FormControl');
 var targetDB = require('../utils/data-provider').targetDb();
 
+export class ErrorValidate extends Component {
+  render(){
+
+    var myStyle = {
+      color: '#FF0000',
+      display: 'block'
+    }
+
+    return (
+      <span id="errorMessage" style={myStyle} >
+        Field should not be blank.
+      </span>
+    );
+  }
+}
+
 export default class Setting extends Component {
   saveSetting() {
       var id = (document.getElementById('projectName').value).replace(/ +/g, ""),
@@ -45,6 +61,15 @@ export default class Setting extends Component {
       });
    
   }
+  validateForm(){
+    projectName = document.getElementById('projectName').value,
+    srcLangName = document.getElementById('srcLangName').value,
+    srcLangScript = document.getElementById('srcLangScript').value,
+    targetLanguage = document.getElementById('targetLanguage').value,
+    targetLanguageScript = document.getElementById('targetLanguageScript').value; 
+
+
+  }
   render() {
     return (
       <div>
@@ -58,22 +83,27 @@ export default class Setting extends Component {
                     <div className="form-group">
                       <label>Project Name</label>
                       <FormControl type="text" id="projectName" placeholder=""></FormControl>
+                      <ErrorValidate/>
                     </div>
                     <div className="form-group">
                       <label>Source Language Name</label>
                       <FormControl type="text"  id="srcLangName" placeholder="hi"></FormControl>
+                      <ErrorValidate/>
                     </div>
                     <div className="form-group">
                       <label>Source Language Script</label>
                       <FormControl type="text" id="srcLangScript" placeholder=""></FormControl>
+                      <ErrorValidate/>
                     </div>
                     <div className="form-group">
                       <label>Target Language</label>
                       <FormControl type="text" id="targetLanguage" placeholder=""></FormControl>
+                      <ErrorValidate/>
                     </div>
                     <div className="form-group">
                       <label>Target Language Script</label>
                       <FormControl  id="targetLanguageScript" placeholder=""></FormControl>
+                      <ErrorValidate/>
                     </div>
                     <button className="btn btn-success" id="ref-import-btn" onClick={this.saveSetting}>Import</button>
                   </div>
