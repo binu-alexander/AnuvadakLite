@@ -5,6 +5,7 @@
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "main.js",
   "scripts": {
+    "preinstall": "npm install bower && bower install bootstrap-sass-official && npm install gulp && ./node_modules/.bin/gulp",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --retries 2 --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
     "test-all": "npm run lint && npm run flow && npm run test && npm run build",
     "test-watch": "npm test -- --watch",
@@ -160,7 +161,20 @@
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.15.0",
     "webpack-merge": "^2.4.0",
-    "webpack-validator": "^2.3.0"
+    "webpack-validator": "^2.3.0",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-cached": "^1.1.0",
+    "gulp-changed": "^1.2.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-pug": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-util": "^3.0.6",
+    "main-bower-files": "^2.9.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",

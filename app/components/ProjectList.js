@@ -3,18 +3,19 @@ import React, { Component } from 'react';
 const Navbar = require('./navbar.js');
 const Footer = require('./footer.js');
 const FormControl = require('react-bootstrap/lib/FormControl');
-var targetDB = require('../utils/data-provider').targetDb();
 const Table = require('react-bootstrap/lib/Table');
+import { Link } from 'react-router';
+var targetDB = require('../utils/data-provider').targetDb();
 var tr = '';
 
 export default class ProjectList extends Component {
     constructor () {
       super()
-      this.state = {}
+      this.state = {val: []}
       var rows = [];
       var rowsData = targetDB.allDocs({include_docs: true}).then(function(documents) {
       documents.rows.forEach(function(doc){
-        rows.push({id: doc["doc"].id, projectName: doc["doc"].projectName, 
+        rows.push({id: doc.id, projectName: doc["doc"].projectName, 
           srcLangName: doc["doc"].srcLangName, srcLangScript: doc["doc"].srcLangScript, 
           targetLang: doc["doc"].targetLang, targetLangScript: doc["doc"].targetLangScript});
         });
@@ -27,7 +28,6 @@ export default class ProjectList extends Component {
   render() {
     return (
       <div>
-        <Navbar />
           <div className="container">
             <div className="row">
               <div className="col-md-12">
@@ -46,18 +46,20 @@ export default class ProjectList extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                          {this.state.val.map(function(doc, i) {
-                            return (
-                              <tr key={i}>
-                                <td>{doc.projectName}</td>
-                                <td>{doc.srcLangName}</td>
-                                <td>{doc.srcLangScript}</td>
-                                <td>{doc.targetLang}</td>
-                                <td>{doc.targetLangScript}</td>
-                                <td></td>
-                              </tr>
-                            );
-                          })}
+                          { 
+                              this.state.val.map(function(doc, i) {
+                              return (
+                                <tr key={i}>
+                                  <td>{doc.projectName}</td>
+                                  <td>{doc.srcLangName}</td>
+                                  <td>{doc.srcLangScript}</td>
+                                  <td>{doc.targetLang}</td>
+                                  <td>{doc.targetLangScript}</td>
+                                  <td><Link to={"project/" + doc.id}>Edit</Link></td>
+                                </tr>
+                              );
+                              })
+                          }
                       </tbody>
                     </Table>
                   </div>
@@ -65,7 +67,6 @@ export default class ProjectList extends Component {
               </div>
             </div>
           </div>
-        <Footer />
       </div>
     );
   }

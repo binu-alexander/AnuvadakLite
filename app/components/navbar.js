@@ -21,14 +21,14 @@ class NavBar extends React.Component {
                   <span className="icon-bar"></span>
                 </Button>
                 <Link to="/" className="navbar-brand navigation-btn" href="index.html">
-                  <img alt="Brand" src={"../assets/images/logo.png"} />
+                  <img alt="Brand" src={"./assets/images/logo.png"} />
                 </Link>
               </Navbar.Header>
               <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
-                 <li><Link to="/setting"><i className="fa fa-cog fa-2x"></i></Link></li>
-                  <li><Link to="/projectList"><i className="fa fa-info fa-2x"></i></Link></li>
-                  <li><Link to="/export"><i className="fa fa-cloud-download fa-2x"></i></Link></li>
+                 <li><Link to="projectSetting"><i className="fa fa-cog fa-2x"></i></Link></li>
+                  <li><Link to="projects"><i className="fa fa-info fa-2x"></i></Link></li>
+                  <li><Link to="export"><i className="fa fa-cloud-download fa-2x"></i></Link></li>
                 </ul>
               </div>
             </Navbar>

@@ -46,3 +46,8 @@ main.js.map
 /build
 yarn.lock
 .idea
+
+bower_components
+.npm
+app/assets/
+

@@ -8,7 +8,6 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Navbar />
           <div className="container-fluid">
             <div className="row row-col-fixed">
               <div className="col-sm-6 col-fixed">
@@ -17,7 +16,6 @@ export default class Home extends Component {
               </div>
             </div>
           </div>
-        <Footer />
       </div>
     );
   }

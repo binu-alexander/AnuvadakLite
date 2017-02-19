@@ -1,15 +1,11 @@
 // @flow
 import React, { Component } from 'react';
-const Navbar = require('./navbar.js');
-const Footer = require('./footer.js');
 const FormControl = require('react-bootstrap/lib/FormControl');
 var targetDB = require('../utils/data-provider').targetDb();
 
-export default class Setting extends Component {
-  props: {
-    projectId: string
-  };
-  saveSetting() {
+
+export default class EditSettingPage extends Component {
+	getSetting() {
       var id = (document.getElementById('projectName').value).replace(/ +/g, ""),
             projectName = document.getElementById('projectName').value,
             srcLangName = document.getElementById('srcLangName').value,
@@ -49,7 +45,16 @@ export default class Setting extends Component {
    
   }
   render() {
-    const { projectId } = this.props;
+  	const projectId = this.props.params.projectId;
+  	targetDB.get(projectId).then(function(doc) {
+  		document.getElementById('projectName').value = doc.projectName;
+        document.getElementById('srcLangName').value = doc.srcLangName;
+        document.getElementById('srcLangScript').value = doc.srcLangScript;
+        document.getElementById('targetLanguage').value = doc.targetLang;
+        document.getElementById('targetLanguageScript').value = doc.targetLangScript;
+    }).catch(function(err) {
+    	console.log(err);
+    });
     return (
       <div>
           <div className="container">
@@ -78,7 +83,7 @@ export default class Setting extends Component {
                       <label>Target Language Script</label>
                       <FormControl  id="targetLanguageScript" placeholder=""></FormControl>
                     </div>
-                    <button className="btn btn-success" id="ref-import-btn" onClick={this.saveSetting}>Import</button>
+                    <button className="btn btn-success" id="ref-import-btn" onClick={this.saveSetting}>Update Import</button>
                   </div>
                 </div>
               </div>
@@ -87,6 +92,4 @@ export default class Setting extends Component {
       </div>
     );
   }
- 
 }
-module.exports = Setting
